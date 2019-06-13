@@ -45,34 +45,11 @@
             <div class="grid main">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
+                {% for article in articles %}
                 <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" />
+                    {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
                 </div>
-                <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
-                </div>
-                <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" />
-                </div>
-                <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" />
-                </div>
-                <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" />
-                </div>
-                <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" />
-                </div>
-                <div class="grid-item">
-                    <img class="img-show"  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg" />
-                </div>
-                <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" />
-                </div>
-                <div class="grid-item">
-                    <img class="img-show" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg"/>
-                </div>
-
+                {% endfor %}
             </div>
         </div>
 

@@ -18,6 +18,7 @@ class ArticleController extends Controller {
      */
     public function index() {
         $articles= $this->getDoctrine()->getRepository(Article::class)->findAll();
+
         return $this->render('articles/index.html.twig', array('articles' => $articles));
     }
 
@@ -27,23 +28,24 @@ class ArticleController extends Controller {
      */
     public function new(Request $request) {
         $article = new Article();
-        $form = $this->createFormBuilder($article)
-            ->add('title', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('body', TextareaType::class, array(
-                'required' => false,
-                'attr' => array('class' => 'form-control')
-            ))
-            ->add('save', SubmitType::class, array(
-                'label' => 'Create',
-                'attr' => array('class' => 'btn btn-primary mt-3')
-            ))
-            ->getForm();
+        $form = $this->createForm('App\Form\ArticleType', $article);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+
+            if ($file = $form->get('picture')->getData()) {
+                $fileName = $this->_generateUniqueFileName()
+                    . '.' . $file->guessExtension();
+                $file->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+                $article->setPicture($fileName);
+            }
+
             $article = $form->getData();
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
-            $entityManager->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
             return $this->redirectToRoute('homepage');
         }
         return $this->render('articles/new.html.twig', array(
@@ -54,28 +56,35 @@ class ArticleController extends Controller {
      * @Route("/article/edit/{id}", name="edit_article")
      * Method({"GET", "POST"})
      */
-    public function edit(Request $request, $id) {
-        $article = new Article();
-        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
-        $form = $this->createFormBuilder($article)
-            ->add('title', TextType::class, array('attr' => array('class' => 'form-control')))
-            ->add('body', TextareaType::class, array(
-                'required' => false,
-                'attr' => array('class' => 'form-control')
-            ))
-            ->add('save', SubmitType::class, array(
-                'label' => 'Update',
-                'attr' => array('class' => 'btn btn-primary mt-3')
-            ))
-            ->getForm();
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+    public function edit(Request $request, Article $article) {
+        $article = $this->getDoctrine()->getRepository(Article::class)->find($article);
+        $file = $article->getPicture();
+        $edit_form = $this->createForm('App\Form\ArticleType', $article);
+        $edit_form->handleRequest($request);
+
+        if($edit_form->isSubmitted() && $edit_form->isValid()) {
+
+            if ($article->getPicture()){
+                $file = $article->getPicture();
+
+            //To save your actually image if she's not edit
+            $fileName = $this->_generateUniqueFileName()
+                .'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+            $article->setPicture($fileName);
+            }
+            else {
+                $article->setPicture($file);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
             return $this->redirectToRoute('homepage');
         }
         return $this->render('articles/edit.html.twig', array(
-            'form' => $form->createView()
+            'edit_form' => $edit_form->createView()
         ));
     }
     /**
@@ -97,16 +106,16 @@ class ArticleController extends Controller {
         $response = new Response();
         $response->send();
     }
-    // /**
-    //  * @Route("/article/save")
-    //  */
-    // public function save() {
-    //   $entityManager = $this->getDoctrine()->getManager();
-    //   $article = new Article();
-    //   $article->setTitle('Article Two');
-    //   $article->setBody('This is the body for article two');
-    //   $entityManager->persist($article);
-    //   $entityManager->flush();
-    //   return new Response('Saved an article with the id of  '.$article->getId());
-    // }
+
+    /**
+     * UniqueFileName Picture
+     *
+     * @return string
+     */
+    private function _generateUniqueFileName()
+    {
+        // md5() reduces the similarity of the file names generated by
+        // uniqid(), which is based on timestamps
+        return md5(uniqid());
+    }
 }

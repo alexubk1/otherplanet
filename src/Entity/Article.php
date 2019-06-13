@@ -28,13 +28,13 @@ class Article
     /**
      * @var \Int
      *
-     * @ORM\Column(name="isPublish", type="integer")
+     * @ORM\Column(name="isPublish", type="boolean")
      */
-    private $isPublish;
+    private $isPublish = 0;
     /**
      * @var string
      *
-     * @ORM\Column(name="picture", type="string", length=255)
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
     /**
@@ -45,7 +45,7 @@ class Article
     /**
      * @return \DateTime
      */
-    public function getCreationDate(): \DateTime
+    public function getCreationDate(): ?\DateTime
     {
         return $this->creationDate;
     }
@@ -61,15 +61,15 @@ class Article
     /**
      * @return Int
      */
-    public function getisPublish(): Int
+    public function getisPublish(): ?bool
     {
         return $this->isPublish;
     }
 
     /**
-     * @param Int $isPublish
+     * @param Boolean $isPublish
      */
-    public function setIsPublish(Int $isPublish): void
+    public function setIsPublish(?bool $isPublish): self
     {
         $this->isPublish = $isPublish;
     }
@@ -77,7 +77,7 @@ class Article
     /**
      * @return string
      */
-    public function getPicture(): string
+    public function getPicture()
     {
         return $this->picture;
     }
@@ -85,7 +85,7 @@ class Article
     /**
      * @param string $picture
      */
-    public function setPicture(string $picture): void
+    public function setPicture(?string $picture): void
     {
         $this->picture = $picture;
     }

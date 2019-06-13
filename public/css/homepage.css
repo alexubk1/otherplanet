@@ -184,11 +184,9 @@ a.brand-side{
 /* Modal Content (image) */
 .modal-content {
     margin: auto;
-
     height: auto;
-    width: 700px;
+    width: 1000px;
     position: relative;
-    margin: auto;
 }
 
 /* Caption of Modal Image */
@@ -312,6 +310,7 @@ a.brand-side{
 }
 
 .img01 {
-    width: 700px;
+    width: 1000px;
     height: auto;
 }
+

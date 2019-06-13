@@ -1,9 +1,61 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block title %}New Article{% endblock %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <section class="">
+
+        <div class="header-admin">
+            <p class="title-admin"><i ></i> Ajouter une photo</p>
+        </div>
+
+        <div class="content-form">
+            {{ form_start(form) }}
+            <div class="container-fluid mt-100 mb-30 form-style ">
+                <div class="row">
+
+                    <!-- Add cover pictures -->
+                    <div class="col-md-12">
+                        {{ form_widget(form.picture, {'attr': {'class': 'btn-label'}} ) }}
+                    </div>
+                    <!-- End Add cover pictures -->
+
+                    <!-- Add title -->
+                    <div class="col-md-12 pt-30">
+                        {{ form_widget(form.title|raw, {'attr': {'class': 'form-label-title pl-10', 'placeholder': 'Ajouter un titre'}} ) }}
+                        {{ form_errors(form.title|raw) }}
+                    </div>
+                    <!-- End Add cover pictures -->
+
+                    <!-- Add date -->
+                    <div class="col-md-12 pt-30">
+                        {{ form_widget(form.creationDate|raw, {'attr': {'class': 'form-label-title pl-10', 'placeholder': 'Ajouter une date'}} ) }}
+                        {{ form_errors(form.creationDate|raw) }}
+                    </div>
+                    <!-- End Add date -->
+
+                    <!-- Add category -->
+                    <div class="col-md-12 pt-30">
+                        {{ form_widget(form.category|raw, {'attr': {'class': 'form-label-title pl-10'}} ) }}
+                        {{ form_errors(form.category|raw) }}
+                    </div>
+                    <!-- End category -->
+
+                    <!-- Publish-->
+                    <div class="col-md-12 pt-30">
+                        {{ form_widget(form.isPublish|raw) }}
+                        {{ form_label(form.isPublish|raw) }}
+                        {{ form_errors(form.isPublish|raw) }}
+                    </div>
+                    <!-- End Publish-->
+                    <div class="col-md-12 pt-30">
+                        {{ form_widget(form) }}
+                        <input id="test" class="btn btn-primary" type="submit" value="Publier la photo"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     {{ form_end(form) }}
+
+    </section>
 {% endblock %}

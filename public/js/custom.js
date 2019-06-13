@@ -46,7 +46,7 @@ $(document).ready(function(){
          imageThis = $(this);
          modal.style.display = "block";
          modalImg.src = $(this).prop('src');
-         captionText.innerHTML = $(this).prop('alt');
+         //captionText.innerHTML = $(this).prop('alt');
     });
 
     $('.child-left').hover(function () {
@@ -63,7 +63,7 @@ $(document).ready(function(){
             }
             modal.style.display = "block";
             modalImg.src = image.prop('src');
-            captionText.innerHTML = image.prop('alt');
+            //captionText.innerHTML = image.prop('alt');
             imageThis = image;
         });
     });
@@ -82,7 +82,7 @@ $(document).ready(function(){
             }
             modal.style.display = "block";
             modalImg.src = image.prop('src');
-            captionText.innerHTML = image.prop('alt');
+            //captionText.innerHTML = image.prop('alt');
             imageThis = image;
                 });
     });
@@ -115,14 +115,13 @@ $(document).ready(function(){
             }
             modal.style.display = "block";
             modalImg.src = image.prop('src');
-            captionText.innerHTML = image.prop('alt');
+            //captionText.innerHTML = image.prop('alt');
             imageThis = image;
     });
 
     $('.arrowLeft').on('click', function(){
 
         var image = imageThis;
-        console.log(image);
         var image = image.closest('.grid-item').prev().find('img');
         if (image.prop('src') == undefined) {
             image = $('.grid-item:last').find('img');
@@ -142,7 +141,7 @@ $(document).ready(function(){
         }
         modal.style.display = "block";
         modalImg.src = image.prop('src');
-        captionText.innerHTML = image.prop('alt');
+        //captionText.innerHTML = image.prop('alt');
         imageThis = image;
     });
 });
