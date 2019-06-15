@@ -76,6 +76,7 @@ hr{
     min-width: 130px;
     box-shadow: 0px 8px 16px 0px rgba(66, 66, 66, 0.58);
     z-index: 1;
+    top:103%;
 }
 
 

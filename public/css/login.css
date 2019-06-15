@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Bungee+Outline');
+
+
+body {
+    background-image: url("../images/Login-img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.username{
+    color: #000000;
+    font-size: 1.8em;
+    font-family: Oxygen-Regular, sans-serif;
+}
+
+.name-user{
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.login-container {
+border-radius: 3px;
+overflow: hidden;
+padding-right: 15px;
+padding-left: 15px;
+max-width: 323px;
+margin-left: 308px;
+margin-top: 90px;
+background-image: linear-gradient(to bottom, #00000014, #3b3b3b26, #7777771a, #b9b9b914, #f7f4f312);
+padding-bottom: 10px;
+}
+
+.request-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    overflow: hidden;
+    float: right !important;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.login-container h1 {
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    padding: 0;
+    font-family: 'Audiowide', Arial;
+}
+
+.login-container h2 {
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    padding: 0;
+    margin-bottom: 0;
+    font-family: 'Arimo', Arial;
+}
+
+.login-container input[type=submit] {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.user-box {
+    text-align: center;
+    color:transparent;
+}
+
+.input-group{
+    background-color: transparent;
+}
+
+.form-group .sign-btn{
+    background-color: #27615e;
+    color: black;
+}
+
+input #username.form-control, input#password.form-control {
+    background-color: white;
+    color: black;
+}
+
+
+.fa-user, .fa-lock {
+    color: black;
+}
+
+span.input-group-addon{
+    background-color: transparent;
+    border: none;
+    padding-right: 20px;
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.remember-box {
+    padding-bottom: 10px;
+    color:white;
+}
+
+.login-form .input-group .form-control {
+    background: transparent;
+    height: 44px;
+    color: #ddd;
+}
+
+
+.login-container input[type=text], input[type=password] {
+    height: 40px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    /* border-radius: 2px; */
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border-radius: 10px!important;
+}
+
+.login-container input[type=text]:hover, input[type=password]:hover {
+    border: 1px solid #b9b9b9;
+    border-top: 1px solid #a0a0a0;
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.login-submit {
+    /* border: 1px solid #3079ed; */
+    border: 0px;
+    color: black;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    background-color: transparent;
+    padding: 17px 0px;
+    font-size: 14px;
+}
+
+.login-submit:hover {
+    /* border: 1px solid #2f5bb7; */
+    border: 0px;
+    text-shadow: 0 1px rgba(0,0,0,0.3);
+    background-color: #357ae8;
+}
+
+.login-container a {
+    text-decoration: none;
+    color: #bfb8b8;;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.6;
+    transition: opacity ease 0.5s;
+}
+
+.login-help {
+    font-size: 12px;
+}
+
+.btn {
+    background: #5c5a65f7;
+    border-color: #5c5a65f7;
+    color: #fff;
+    width: 180px;
+    height: 30px;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.btn:hover {
+    background: rgba(0, 77, 124, 0.8);
+    border-color: #1b5a7c;
+    color: #fff;
+    width: 180px;
+    height: 30px;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}

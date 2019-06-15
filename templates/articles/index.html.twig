@@ -27,13 +27,12 @@
 
             <div class="sidenav">
                 <h2 class="EL-title">Ⓞⓟ</h2>
-                <a href="#services">BOOK 1 | ALL </a>
-                <a href="#services">LANDSCAPE</a>
-                <a href="#clients">INSIDE</a>
-                <a href="#contact">STREET</a>
-                <a href="#contact">INSIDE</a>
-                <a href="#contact">PORTRAIT</a>
-                <a href="#contact">VIDEO</a>
+                <a href="{{path('homepage') }}">BOOK 1 | ALL </a>
+                <a href="{{path('category_type', {type: 'landscape'}) }}">LANDSCAPE</a>
+                <a href="{{path('category_type', {type: 'inside'}) }}">INSIDE</a>
+                <a href="{{path('category_type', {type: 'street'}) }}">STREET</a>
+                <a href="{{path('category_type', {type: 'portrait'}) }}">PORTRAIT</a>
+                <a href="{{path('category_type', {type: 'video'}) }}">VIDEO</a>
                 <p class="pl-30">------------------------</p>
                 <a class="pt-10" href="#contact">CONTACT</a>
                 <a><span class="fa fa-instagram"></span></a>
@@ -45,11 +44,15 @@
             <div class="grid main">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
-                {% for article in articles %}
-                <div class="grid-item">
-                    {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
-                </div>
-                {% endfor %}
+                {% if articles is not null %} }
+                    {% for article in articles %}
+                    <div class="grid-item">
+                        {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
+                    </div>
+                    {% endfor %}
+                {% else %}
+                 <div><p>This category have no content</p> </div>
+                {% endif %}
             </div>
         </div>
 

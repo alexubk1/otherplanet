@@ -1,0 +1,26 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block body %}
+
+<section>
+    <div class="parent-grid-admin">
+        <div class="grid main">
+            <div class="grid-sizer"></div>
+            <div class="gutter-sizer"></div>
+            {% if articles is not null %} }
+                {% for article in articles %}
+                    <div class="grid-item">
+                        {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div><p>This category have no content</p> </div>
+            {% endif %}
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

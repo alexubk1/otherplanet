@@ -1,6 +1,7 @@
 <?php
 namespace App\Repository;
 use App\Entity\Article;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 /**
@@ -15,16 +16,15 @@ class ArticleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Article::class);
     }
-    /*
-    public function findBySomething($value)
+
+    public function findAllPicturesByCategory(Category $category)
     {
-        return $this->createQueryBuilder('a')
-            ->where('a.something = :value')->setParameter('value', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('c')
+            ->join('c.categoryName', 'ca')
+            ->where('ca = :categoryName')
+            ->setParameter('categoryName', $category)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
 }

@@ -1,6 +1,10 @@
 <?php
 namespace App\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
@@ -26,11 +30,29 @@ class Article
      */
     private $creationDate;
     /**
-     * @var \Int
+     * @var \boolean
      *
      * @ORM\Column(name="isPublish", type="boolean")
      */
     private $isPublish = 0;
+
+    /**
+     * @return bool
+     */
+    public function isPublish(): bool
+    {
+        return $this->isPublish;
+    }
+
+    /**
+     * @param bool $isPublish
+     */
+    public function setIsPublish(bool $isPublish): void
+    {
+        $this->isPublish = $isPublish;
+    }
+
+
     /**
      * @var string
      *
@@ -38,9 +60,9 @@ class Article
      */
     private $picture;
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="articles")
      */
-    private $category;
+    private $categoryName;
 
     /**
      * @return \DateTime
@@ -58,21 +80,6 @@ class Article
         $this->creationDate = $creationDate;
     }
 
-    /**
-     * @return Int
-     */
-    public function getisPublish(): ?bool
-    {
-        return $this->isPublish;
-    }
-
-    /**
-     * @param Boolean $isPublish
-     */
-    public function setIsPublish(?bool $isPublish): self
-    {
-        $this->isPublish = $isPublish;
-    }
 
     /**
      * @return string
@@ -88,22 +95,6 @@ class Article
     public function setPicture(?string $picture): void
     {
         $this->picture = $picture;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * @param mixed $category
-     */
-    public function setCategory($category): void
-    {
-        $this->category = $category;
     }
 
     private $body;
@@ -123,4 +114,50 @@ class Article
     public function setBody($body) {
         $this->body = $body;
     }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categoryName = new ArrayCollection();
+    }
+
+    /**
+     * Add categoryName.
+     *
+     * @param \AppBundle\Entity\Tool $categoryName
+     * @return article
+     */
+    public function addCategoryName(\AppBundle\Entity\Category $categoryName) : self
+    {
+        if (!$this->categoryName->contains($categoryName)) {
+            $this->categoryName[] = $categoryName;
+        }
+        return $this;
+    }
+    /**
+     * Remove categoryName.
+     *
+     * @param \AppBundle\Entity\Category $categoryName
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeCategoryName(\AppBundle\Entity\Category $categoryName)
+    {
+        if (!$this->categoryName->contains($categoryName)) {
+            $this->categoryName->removeElement($categoryName);
+        }
+        return $this;
+    }
+    /**
+     * Get categoryName.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategoryName(): Collection
+    {
+        return $this->categoryName;
+    }
+
 }

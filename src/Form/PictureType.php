@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,13 +12,13 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 
-class ArticleType extends AbstractType
+class PictureType extends AbstractType
 {
 
-/**
+    /**
      * {@inheritdoc}
      *
      * @param FormBuilderInterface $builder The formBuilderInterface form
@@ -30,14 +31,14 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('picture', FileType::class, array(
-                  'label' => false,
-                  'required' => false,
-                  'data_class' => null, 'attr' => array(
-                  'accept' => '.jpg,.jpeg,.png')
+                'label' => false,
+                'required' => false,
+                'data_class' => null, 'attr' => array(
+                    'accept' => '.jpg,.jpeg,.png')
             ))
             ->add('title', TextareaType::class, [
                 'attr' => ['class' => 'tinymce'],
-           ])
+            ])
             ->add('creationDate', DateType::class, array(
                 'widget' => 'single_text',
                 'required' => false
@@ -47,8 +48,12 @@ class ArticleType extends AbstractType
                 'required' => false,
                 'label_attr' => array('class' => 'pl-10')
             ])
-            ->add('category')
-            ->getForm();
+            ->add('categoryName',  EntityType::class, array(
+                'class' => 'App:Category',
+                'choice_label' => 'categoryName',
+                'multiple'     => true
+            ))
+        ->getForm();
     }
     /**
      * {@inheritdoc
@@ -61,7 +66,7 @@ class ArticleType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-            'data_class' => 'App\Entity\Article'
+                'data_class' => 'App\Entity\Article'
             )
         );
     }

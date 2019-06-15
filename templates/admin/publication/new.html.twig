@@ -27,19 +27,19 @@
                     </div>
                     <!-- End Add cover pictures -->
 
+                    <!-- Add category -->
+                    <div class="col-md-12 pt-30">
+                        {{ form_widget(form.categoryName|raw, {'attr': {'class': 'form-label-title pl-10'}} ) }}
+                        {{ form_errors(form.categoryName|raw) }}
+                    </div>
+                    <!-- End category -->
+
                     <!-- Add date -->
                     <div class="col-md-12 pt-30">
                         {{ form_widget(form.creationDate|raw, {'attr': {'class': 'form-label-title pl-10', 'placeholder': 'Ajouter une date'}} ) }}
                         {{ form_errors(form.creationDate|raw) }}
                     </div>
                     <!-- End Add date -->
-
-                    <!-- Add category -->
-                    <div class="col-md-12 pt-30">
-                        {{ form_widget(form.category|raw, {'attr': {'class': 'form-label-title pl-10'}} ) }}
-                        {{ form_errors(form.category|raw) }}
-                    </div>
-                    <!-- End category -->
 
                     <!-- Publish-->
                     <div class="col-md-12 pt-30">
