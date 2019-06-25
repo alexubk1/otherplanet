@@ -9,14 +9,21 @@
         <div class="grid main">
             <div class="grid-sizer"></div>
             <div class="gutter-sizer"></div>
-            {% if articles is not null %} }
+            {% if articles is not null %}
                 {% for article in articles %}
                     <div class="grid-item">
                         {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
+                        <a title="Edit" class="pr-10" href="{{ path('edit_publication', {id:article.id}) }}"><i class="fas fa-edit"></i></a>
+                        {% if article.isPublish == 1 %}
+                        <a title="remove publish" class="pr-10" href="{{ path('edit_publication_removepublish', {id: article.id}) }}"><i class="fas fa-times"></i></a>
+                        {% else %}
+                        <a title="publish" class="pr-10" href="{{ path('edit_publication_publish', {id:article.id}) }}"><i class="fas fa-check"></i></a>
+                        {% endif %}
+                        <a title="Delete" class="pr-10" href=""><i class="fas fa-trash"></i></a><span ></span>
                     </div>
                 {% endfor %}
             {% else %}
-                <div><p>This category have no content</p> </div>
+                <div><p>This category has no content</p> </div>
             {% endif %}
         </div>
     </div>

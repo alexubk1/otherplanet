@@ -9,7 +9,7 @@
             <div class="carousel-inner" id="slideshow">
                 <div class="carousel-item active image">
                     <div class="text-box" >
-                        <h2 class="wow slideInRight"  data-wow-duration="2s"><a style="color: white; text-underline: none " href="">PHOTO</a></h2>
+                        <h2 class="wow slideInRight"  data-wow-duration="2s"><a style="color: white; z-index:-1; text-underline: none"  href="">PHOTO</a></h2>
                         <hr>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
             </div>
     </section>
 
-    <section class="image-section">
+    <section id="photo-section" class="image-section">
         <!-- Click photo to check out the modal -->
 
             <div class="sidenav">
@@ -34,24 +34,24 @@
                 <a href="{{path('category_type', {type: 'portrait'}) }}">PORTRAIT</a>
                 <a href="{{path('category_type', {type: 'video'}) }}">VIDEO</a>
                 <p class="pl-30">------------------------</p>
-                <a class="pt-10" href="#contact">CONTACT</a>
+                <a class="pt-10" href="/contact">CONTACT</a>
                 <a><span class="fa fa-instagram"></span></a>
             </div>
 
 
-            <h1 style="text-align: center" class="pt-20 main dot-h1">- - - - - - - - - -</h1>
+            <h1 style="text-align: center;"class="pt-20 main dot-h1">- - - - - - - - - -</h1>
         <div class="parent-grid">
             <div class="grid main">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
-                {% if articles is not null %} }
+                {% if articles is not null %}
                     {% for article in articles %}
                     <div class="grid-item">
                         {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
                     </div>
                     {% endfor %}
                 {% else %}
-                 <div><p>This category have no content</p> </div>
+                 <div><p>This category has no content</p> </div>
                 {% endif %}
             </div>
         </div>

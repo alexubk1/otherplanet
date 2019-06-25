@@ -51,7 +51,8 @@ class PictureType extends AbstractType
             ->add('categoryName',  EntityType::class, array(
                 'class' => 'App:Category',
                 'choice_label' => 'categoryName',
-                'multiple'     => true
+                'multiple'     => true,
+                'required'     => false,
             ))
         ->getForm();
     }

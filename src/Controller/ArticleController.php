@@ -19,7 +19,7 @@ class ArticleController extends Controller {
      */
     public function index() {
 
-        $articles= $this->getDoctrine()->getRepository(Article::class)->findAll();
+        $articles= $this->getDoctrine()->getRepository(Article::class)->findBy(['isPublish'=> true]);
 
         return $this->render('articles/index.html.twig', array('articles' => $articles));
     }

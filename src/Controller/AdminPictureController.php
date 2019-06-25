@@ -37,7 +37,7 @@ class AdminPictureController extends Controller
     }
 
     /**
-     * @Route("/publication/new", name="new_article")
+     * @Route("/publication/new", name="new_publication")
      * Method({"GET", "POST"})
      */
     public function new(Request $request) {
@@ -62,12 +62,12 @@ class AdminPictureController extends Controller
             $em->flush();
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('admin/publication/articles/new.html.twig', array(
+        return $this->render('admin/publication/new.html.twig', array(
             'form' => $form->createView()
         ));
     }
     /**
-     * @Route("/publication/edit/{id}", name="edit_article")
+     * @Route("/publication/edit/{id}", name="edit_publication")
      * Method({"GET", "POST"})
      */
     public function edit(Request $request, Article $article) {
@@ -97,9 +97,36 @@ class AdminPictureController extends Controller
             $entityManager->flush();
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('admin/publication/articles/edit.html.twig', array(
-            'edit_form' => $edit_form->createView()
+        return $this->render('admin/publication/edit.html.twig', array(
+            'edit_form' => $edit_form->createView(),
+            'article' => $article
         ));
+    }
+
+    /**
+     * @Route("/publication/edit/removePublish/{id}", name="edit_publication_removepublish")
+     * Method({"GET", "POST"})
+     */
+    public function removePublish(Request $request, Article $article) {
+        $article = $this->getDoctrine()->getRepository(Article::class)->find($article);
+        $article->setIsPublish(false);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_publication');
+
+    }
+
+    /**
+     * @Route("/publication/edit/Publish/{id}", name="edit_publication_publish")
+     * Method({"GET", "POST"})
+     */
+    public function publish(Request $request, Article $article) {
+        $article = $this->getDoctrine()->getRepository(Article::class)->find($article);
+        $article->setIsPublish(true);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_publication');
+
     }
 
 

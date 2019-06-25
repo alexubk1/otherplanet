@@ -1,29 +1,30 @@
 $(document).ready(function(){
 
+        $(window).scroll(function () {
+            var sc = $(window).scrollTop();
 
-    $(window).scroll(function (event) {
-        var sc = $(window).scrollTop();
-        if (sc > 750) {
-        $('.sidenav').css('position', 'fixed');
-        $('.dot-h1').css('margin-top', '45px');
-        $('.grid').css('margin-top', '180px');
-        }
-        else {
-            $('.sidenav').css('position', 'sticky');
-            $('.grid').css('margin-top', '0');
-            $('.dot-h1').css('margin-top', '0');
+            if ($(window).width() > 991) {
+                if (sc > 750) {
+                    $('.sidenav').css('position', 'fixed');
+                    $('.dot-h1').css('margin-top', '45px');
+                    $('.grid').css('margin-top', '180px');
+                }
+                else {
+                    $('.sidenav').css('position', 'sticky');
+                    $('.grid').css('margin-top', '0');
+                    $('.dot-h1').css('margin-top', '0');
+                }
 
-        }
-
-        if (sc > 690) {
-            $('.navbar').css('display', 'none');
-        }
-        else {
-            $('.navbar').css('display', 'block');
-        }
+                if (sc > 690) {
+                    $('.navbar').css('display', 'none');
+                }
+                else {
+                    $('.navbar').css('display', 'block');
+                }
+            }
         });
 
-    var $grid = $('.grid').masonry({
+        var $grid = $('.grid').masonry({
         itemSelector: '.grid-item',
         percentPosition: true,
         columnWidth: '.grid-sizer',

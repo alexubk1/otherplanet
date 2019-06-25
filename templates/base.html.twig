@@ -2,12 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100i|Abril+Fatface" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="" />
@@ -26,14 +28,14 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active pl-20">
-                                <a class="nav-link" href="#">ACCUEIL
+                                <a class="nav-link" href="/">ACCUEIL
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
                             <li class="nav-item dropdown pl-20">
                                 <a class="nav-link" href="#">CATEGORY</a>
                                 <div class="dropdown-content">
-                                    <a href="#">PHOTO</a>
+                                    <a href="#photo-section">PHOTO</a>
                                     <a href="#">VIDEO</a>
                                     <a href="#">MUSIC</a>
                                     <a href="#">ART</a>
@@ -43,7 +45,7 @@
                                 <a class="nav-link" href="#">BLOG</a>
                             </li>
                             <li class="nav-item pl-20">
-                                <a class="nav-link" href="#">CONTACT</a>
+                                <a class="nav-link" href="/contact">CONTACT</a>
                             </li>
                             <li class="nav-item pl-20">
                                 <a class="nav-link" href="#"><span class="fa fa-instagram"></span></a>

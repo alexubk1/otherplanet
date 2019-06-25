@@ -6,14 +6,18 @@
     <section class="">
 
         <div class="header-admin">
-            <p class="title-admin"><i ></i> Ajouter une photo</p>
+            <p class="title-admin"><i ></i> Editer une photo</p>
         </div>
+
 
         <div class="content-form">
             {{ form_start(edit_form) }}
             <div class="container-fluid mt-100 mb-30 form-style ">
                 <div class="row">
 
+                    <div class="col-md-12 pb-40 text-center">
+                    {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture"  style="width: 50%;" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
+                    </div>
                     <!-- Add cover pictures -->
                     <div class="col-md-12">
                         {{ form_widget(edit_form.picture, {'attr': {'class': 'btn-label'}} ) }}
@@ -50,7 +54,8 @@
                     <!-- End Publish-->
                     <div class="col-md-12 pt-30">
                         {{ form_widget(edit_form) }}
-                        <input id="test" class="btn btn-primary" type="submit" value="Publier la photo"/>
+                        <input  id="test" class="btn btn-primary" type="submit" value="Edit"/>
+                        <a class="pl-20" href="{{ path('admin_publication') }}">Back to publication's list</a>
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@
 html {
     overflow-y: scroll;
 }
+
 body {
     font-family: sans-serif;
 }
@@ -75,12 +76,8 @@ body {
     top: 0;
     display: block;
 }
-@media only screen and (min-width: 320px) {
-    .grid-sizer, .grid-item {
-        width: 99%;
-    }
-}
-@media only screen and (min-width: 492px) {
+
+@media screen and (min-width: 492px) {
     .grid-sizer, .grid-item {
         width: 100%;
     }
@@ -88,9 +85,10 @@ body {
         width: 10px;
     }
 }
-@media only screen and (min-width: 816px) {
+
+@media screen and (min-width: 817px) {
     .grid-sizer, .grid-item {
-        width: 32%;
+        width: 32% !important;
     }
 }
 
@@ -314,3 +312,51 @@ a.brand-side{
     height: auto;
 }
 
+
+@media all and (max-width: 991px) {
+    #navbar {
+        padding-bottom: 10px;
+    }
+}
+
+
+@media all and (max-width: 816px){
+    .sidenav {
+        display: none;
+    }
+    .parent-grid{
+        padding-top: 100px;
+    }
+    .main {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
+
+    }
+    .grid-item {
+        max-width: 90%;
+        left:5%!important;
+
+    }
+    .dot-h1 {
+        z-index: 4;
+    }
+    .grid {
+        margin-top: 20px;
+    }
+    .carousel-inner {
+        margin-bottom: 30px;
+    }
+    #myModal {
+        display: none!important;
+    }
+   .grid-item img:hover {
+       cursor: default;
+       opacity: 1;
+   }
+
+
+    @viewport {
+        width: auto;
+    }
+}
