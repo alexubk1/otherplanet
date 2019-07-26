@@ -15,7 +15,7 @@ $(document).ready(function(){
                     $('.dot-h1').css('margin-top', '0');
                 }
 
-                if (sc > 690) {
+                if (sc > 700) {
                     $('.navbar').css('display', 'none');
                 }
                 else {

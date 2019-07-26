@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
         <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/aboutme.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="" />
@@ -48,7 +50,10 @@
                                 <a class="nav-link" href="/contact">CONTACT</a>
                             </li>
                             <li class="nav-item pl-20">
-                                <a class="nav-link" href="#"><span class="fa fa-instagram"></span></a>
+                                <a class="nav-link" href="{{ path('aboutme_index') }}">ABOUT ME</a>
+                            </li>
+                            <li class="nav-item pl-20">
+                                <a class="nav-link" href="#"><span class="fab fa-instagram"></span></a>
 
                             </li>
                         </ul>
@@ -62,12 +67,31 @@
     {% endblock %}
         {% block body %}{% endblock %}
 
+    {%set currentPath = path(app.request.attributes.get('_route'))%}
+    {% if currentPath != '/' %}
+        <footer id="mainFooter" class="mainFooter">
+            {% block footer %}
+                <div class="container-fluid">
+                    <div class="row copyrights">
+                        <div class="col-md-2 col-xs-12">
+                            <p><a class="footer-a" href="">General Conditions </a></p>
+                        </div>
+                        <div class="col-md-3 col-xs-12">
+                            <p><a class="footer-a" href="">Admin</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </footer>
+    {% endif %}
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
             integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://cdn.rawgit.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.min.js"></script></pre>
+    <script src="https://kit.fontawesome.com/9d9bf02201.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/masonry.js') }}"></script>
     <script src="{{ asset('js/nav.js') }}"></script>

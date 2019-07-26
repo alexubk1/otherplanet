@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Mali&display=swap');
+
+
+#title {
+    font-size: 4em;
+    font-weight: 600;
+    color: #bc4343;
+}
+
+#description {
+    font-size: 1.75em;
+    font-weight: 300;
+    padding-bottom: 6px;
+    margin-bottom: 0;
+}
+
+.icon-about-section i{
+    padding-top: 30px;
+}
+
+.side-img {
+    width: 100%;
+    height: auto;
+}
+
+.hand-write p {
+    font-family: cursive,Arial;
+    font-size: 20px;
+}

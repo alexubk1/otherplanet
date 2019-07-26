@@ -38,6 +38,29 @@ class Category
      * @ORM\Column(type="text", length=100)
      */
     private $categoryName;
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="subCategory", type="boolean", nullable=true)
+     */
+    private $subCategory;
+
+    /**
+     * @return bool
+     */
+    public function isSubCategory(): bool
+    {
+        return $this->subCategory;
+    }
+
+    /**
+     * @param bool $subCategory
+     */
+    public function setSubCategory(bool $subCategory): void
+    {
+        $this->subCategory = $subCategory;
+    }
+
 
     /**
      * @return mixed

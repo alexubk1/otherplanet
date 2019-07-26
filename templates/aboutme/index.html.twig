@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About me{% endblock %}
+
+{% block body %}
+    <section class="">
+        <div class="container-header"></div>
+            <div class="img_caption">
+                <h2 class="text-box-2 title-header text-center">ABOUT ME<hr></h2>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid pt-50">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 id="title">Alexandre Urbaniak</h3>
+                    <p id="description">Web Developer</p>
+                    <div class="icon-about-section">
+                        <i class="fab fa-php fa-3x pr-40"></i>
+                        <i class="fab fa-symfony fa-3x pr-40"></i>
+                        <i class="fab fa-js fa-3x pr-40"></i>
+                        <i class="fab fa-css3 fa-3x pr-40"></i>
+                        <i class="fab fa-html5 fa-3x pr-40"></i>
+                        <i class="fab fa-git-square fa-3x pr-40"></i>
+                        <i class="far fa-laugh-beam fa-3x"></i>
+                    </div>
+                    <a href="{{ path('download_cv')}}" class="mt-50 btn btn-info">Click here to download my resume</a>
+                </div>
+                <div class="col-md-6 pt-70 pb-30">
+                    <img class="side-img" src="{{ asset('images/alexphoto.png') }}" alt="photo alexandre">
+                </div>
+                <div class="col-md-6 hand-write pt-70">
+                    <p>Hi I'm Alexandre,
+                        <br>
+                        <br>
+                        I live 30 years in the north, and now I live in Toulouse.
+                        <br>
+                        <br>
+                        For my 30th Birthday, I receive a camera, so I decide to create this website to share my universe with my family and my friends.
+                        <br>
+                        <br>
+                        My life is full of passion, I love music, I started playing the Piano when I was child, I played drum a lot of time in the back room alone, and after, in a band for many year. Today I compose music when I have free time.
+                        <br>
+                        <br>
+                        I'm passionate about space, I can passed many hours to watch the sky, dreaming to discover another planet. I look at everything about space, movie (Interstellar), book (Hyperion), conference (Hubert Reeves).
+                        I'm passionate about hearth, I'm fighting to preserve our planet, I'm feeling the need to participate at the protection of environnement. ZERO WASTE .
+                    <p class="float-right pt-30"> Alexandre Urbaniak</p>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

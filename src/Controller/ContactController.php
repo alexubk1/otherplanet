@@ -98,10 +98,10 @@ class ContactController extends Controller
      */
     private function _sendEmail($data)
     {
-        $message = \Swift_Message::newInstance($data["subject"])
-            ->setFrom($this->container->getParameter('mailer_user'))
+        $message = (new \Swift_Message($data["subject"]))
+            ->setFrom('alexandre.urbaniak01@gmail.com')
             ->setCharset('UTF-8')
-            ->setTo($this->container->getParameter('mailer_user'))
+            ->setTo($data['email'])
             ->setBody(
                 $this->renderView(
                     'email/registration.html.twig',
@@ -127,7 +127,7 @@ class ContactController extends Controller
      */
     private function _UnsubscribeEmail($data)
     {
-        $message = \Swift_Message::newInstance()
+        $message = \Swift_Message('hello')
             ->setFrom($this->container->getParameter('mailer_user'))
             ->setCharset('UTF-8')
             ->setTo($this->container->getParameter('mailer_user'))

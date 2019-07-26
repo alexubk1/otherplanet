@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+
 .form-left-side {
 }
 
 .form-right-side {
+}
+
+.contact-title {
+    font-size: 2em;
+    font-family: 'Arimo', cursive;
 }
 
 .form-contact-style input  {
@@ -27,15 +35,27 @@
 }
 
 .container-header {
-    width: auto;
-    height: 800px;
+    width: 100%;
+    height: 750px;
     position: relative;
-    text-align: center;
-    overflow: hidden;
+    background-image: url('../images/aboutme.jpg');
     background-position: 100% 100%;
     background-size: cover;
     background-attachment: fixed;
     background-position: center center;
+    -webkit-filter: brightness(50%);
+}
+
+.container-header-contact {
+    width: 100%;
+    height: 840px;
+    position: relative;
+    background-image: url('../images/contact.jpg');
+    background-position: 100% 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    -webkit-filter: brightness(50%);
 }
 
 
@@ -43,17 +63,19 @@
     width:100%;
     -webkit-filter: brightness(50%);
     height:auto;
-
 }
 
 @media all and (max-width: 816px){
     .img-header {
-        width: auto;
+        width: 100%;
     }
     .bloc_1 {
-    top: 24%;
+    top: 23%;
     }
     .text-box {
-        top: 10%;
+        top: 40%;
+    }
+    .container-header {
+        max-heigh: 100%;
     }
 }

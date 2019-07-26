@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Album;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -54,6 +55,7 @@ class PictureType extends AbstractType
                 'multiple'     => true,
                 'required'     => false,
             ))
+            ->add('album')
         ->getForm();
     }
     /**

@@ -7,6 +7,7 @@
  */
 
 namespace App\Controller;
+use App\Entity\Album;
 use App\Entity\Article;
 use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +43,7 @@ class AdminPictureController extends Controller
      */
     public function new(Request $request) {
         $article = new Article();
+
         $form = $this->createForm('App\Form\PictureType', $article);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {

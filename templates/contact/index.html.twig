@@ -3,19 +3,17 @@
 {% block title %}contact{% endblock %}
 
 {% block body %}
-    <section class="pb-30">
-        <div class="container-header">
-            <img class="img-header" src="{{ asset('images/contact.jpg') }}" alt="image entète page contact">
-            <div class="img_caption">
-                <h2 class="text-box title-header text-center">CONTACT<hr></h2>
-            </div>
+    <section class="">
+        <div class="container-header-contact"></div>
+        <div class="img_caption">
+                <h2 class="text-box-2 title-header text-center">CONTACT<hr></h2>
             <div class="bloc_1">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
-                            <h3 class="contact-title">Let me a message...</h3>
+                        <div class="col-md-12 text-center">
+                            <p class="contact-title">Leave me a message...</p>
                         </div>
-                        <div class="col-md-6 pt-20">
+                        <div class="col-md-6 pt-20 text-right">
                             {{ form_start(form) }}
                             <div class = "pb-20 form-left-side form-contact-style">
                                 {{ form_widget(form.name) }}
@@ -36,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 pt-20">
+                        <div class="col-md-6 pt-20 text-left">
                             <div class = "form-right-side form-contact-style">
                                 {{ form_widget(form.message) }}
                                 <div class="errors">
@@ -48,7 +46,7 @@
                                 {{ form_rest(form) }}
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center">
                             <input class="btn btn-primary btn-lg" type="submit" value="Send">
                         </div>
                         {{ form_end(form) }}

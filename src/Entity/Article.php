@@ -21,9 +21,6 @@ class Article
      */
     private $title;
     /**
-     * @ORM\Column(type="text")
-     */
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="creationDate", type="datetime", nullable=true)
@@ -35,6 +32,24 @@ class Article
      * @ORM\Column(name="isPublish", type="boolean")
      */
     private $isPublish = 0;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="articles")
+     */
+    private $categoryName;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Album",  inversedBy="albums")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $album;
 
     /**
      * @return bool
@@ -53,16 +68,6 @@ class Article
     }
 
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
-     */
-    private $picture;
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="articles")
-     */
-    private $categoryName;
 
     /**
      * @return \DateTime
@@ -121,6 +126,8 @@ class Article
     public function __construct()
     {
         $this->categoryName = new ArrayCollection();
+        $this->album = new ArrayCollection();
+
     }
 
     /**
@@ -158,6 +165,43 @@ class Article
     public function getCategoryName(): Collection
     {
         return $this->categoryName;
+    }
+
+    /**
+     * Add categoryName.
+     *
+     * @param \AppBundle\Entity\Tool $categoryName
+     * @return article
+     */
+    public function addAlbum(\AppBundle\Entity\Album $album) : self
+    {
+        if (!$this->album->contains($album)) {
+            $this->album[] = $album;
+        }
+        return $this;
+    }
+    /**
+     * Remove categoryName.
+     *
+     * @param \AppBundle\Entity\Category $categoryName
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeAlbum(\AppBundle\Entity\Album $album)
+    {
+        if (!$this->album->contains($album)) {
+            $this->album->removeElement($album);
+        }
+        return $this;
+    }
+    /**
+     * Get categoryName.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAlbum(): Collection
+    {
+        return $this->album;
     }
 
 }
