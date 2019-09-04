@@ -15,6 +15,17 @@ class Category
     private $id;
 
     /**
+     * @ORM\Column(type="text", length=100)
+     */
+    private $categoryName;
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="subCategory", type="boolean", nullable=true)
+     */
+    private $subCategory;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -29,21 +40,6 @@ class Category
     {
         $this->id = $id;
     }
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="Category")
-     */
-    private $articles;
-    /**
-     * @ORM\Column(type="text", length=100)
-     */
-    private $categoryName;
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="subCategory", type="boolean", nullable=true)
-     */
-    private $subCategory;
 
     /**
      * @return bool

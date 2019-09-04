@@ -45,11 +45,48 @@ class Article
      */
     private $categoryName;
 
+
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Album",  inversedBy="albums")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Album", inversedBy="albums")
      */
     private $album;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Album", mappedBy="article")
+     */
+    private $articles;
+
+    /**
+     * @return string
+     */
+    public function getPicture(): string
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param string $picture
+     */
+    public function setPicture(string $picture): void
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
+
+    /**
+     * @param mixed $album
+     */
+    public function setAlbum($album): void
+    {
+        $this->album = $album;
+    }
 
     /**
      * @return bool
@@ -85,23 +122,6 @@ class Article
         $this->creationDate = $creationDate;
     }
 
-
-    /**
-     * @return string
-     */
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    /**
-     * @param string $picture
-     */
-    public function setPicture(?string $picture): void
-    {
-        $this->picture = $picture;
-    }
-
     private $body;
     // Getters & Setters
     public function getId() {
@@ -126,17 +146,14 @@ class Article
     public function __construct()
     {
         $this->categoryName = new ArrayCollection();
-        $this->album = new ArrayCollection();
-
     }
 
     /**
      * Add categoryName.
      *
-     * @param \AppBundle\Entity\Tool $categoryName
      * @return article
      */
-    public function addCategoryName(\AppBundle\Entity\Category $categoryName) : self
+    public function addCategoryName(\App\Entity\Category $categoryName) : self
     {
         if (!$this->categoryName->contains($categoryName)) {
             $this->categoryName[] = $categoryName;
@@ -146,11 +163,9 @@ class Article
     /**
      * Remove categoryName.
      *
-     * @param \AppBundle\Entity\Category $categoryName
-     *
      * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
      */
-    public function removeCategoryName(\AppBundle\Entity\Category $categoryName)
+    public function removeCategoryName(\App\Entity\Category $categoryName)
     {
         if (!$this->categoryName->contains($categoryName)) {
             $this->categoryName->removeElement($categoryName);
@@ -166,42 +181,4 @@ class Article
     {
         return $this->categoryName;
     }
-
-    /**
-     * Add categoryName.
-     *
-     * @param \AppBundle\Entity\Tool $categoryName
-     * @return article
-     */
-    public function addAlbum(\AppBundle\Entity\Album $album) : self
-    {
-        if (!$this->album->contains($album)) {
-            $this->album[] = $album;
-        }
-        return $this;
-    }
-    /**
-     * Remove categoryName.
-     *
-     * @param \AppBundle\Entity\Category $categoryName
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeAlbum(\AppBundle\Entity\Album $album)
-    {
-        if (!$this->album->contains($album)) {
-            $this->album->removeElement($album);
-        }
-        return $this;
-    }
-    /**
-     * Get categoryName.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAlbum(): Collection
-    {
-        return $this->album;
-    }
-
 }

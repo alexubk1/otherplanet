@@ -3,7 +3,7 @@
 
 
 body {
-    background-image: url("../images/Login-img.jpg");
+    background: url("../images/Login-img.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

@@ -6,8 +6,10 @@ $(document).ready(function(){
             if ($(window).width() > 991) {
                 if (sc > 750) {
                     $('.sidenav').css('position', 'fixed');
-                    $('.dot-h1').css('margin-top', '45px');
-                    $('.grid').css('margin-top', '180px');
+                    if (window.location.pathname !== '/album') {
+                        $('.dot-h1').css('margin-top', '45px');
+                        $('.grid').css('margin-top', '180px');
+                    }
                 }
                 else {
                     $('.sidenav').css('position', 'sticky');
@@ -107,43 +109,5 @@ $(document).ready(function(){
     span.onclick = function() {
         modal.style.display = "none";
     }
-
-    $('.img01').on('click', function() {
-            var image = imageThis;
-            var image = image.closest('.grid-item').prev().find('img');
-            if (image.prop('src') == undefined) {
-                image = $('.grid-item:last').find('img');
-            }
-            modal.style.display = "block";
-            modalImg.src = image.prop('src');
-            //captionText.innerHTML = image.prop('alt');
-            imageThis = image;
-    });
-
-    $('.arrowLeft').on('click', function(){
-
-        var image = imageThis;
-        var image = image.closest('.grid-item').prev().find('img');
-        if (image.prop('src') == undefined) {
-            image = $('.grid-item:last').find('img');
-        }
-        modal.style.display = "block";
-        modalImg.src = image.prop('src');
-        captionText.innerHTML = image.prop('alt');
-        imageThis = image;
-    });
-
-    $('.arrowRight').on('click', function(){
-
-        var image = imageThis;
-        var image = image.closest('.grid-item').next().find('img');
-        if (image.prop('src') == undefined) {
-            image = $('.grid-item:first').find('img');
-        }
-        modal.style.display = "block";
-        modalImg.src = image.prop('src');
-        //captionText.innerHTML = image.prop('alt');
-        imageThis = image;
-    });
 });
 

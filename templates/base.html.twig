@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
         <link rel="stylesheet" href="{{ asset('css/aboutme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/album.css') }}">
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="" />
@@ -34,18 +35,24 @@
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
-                            <li class="nav-item dropdown pl-20">
+                            <!--<li class="nav-item dropdown padding-bottom-hover pl-20">
                                 <a class="nav-link" href="#">CATEGORY</a>
                                 <div class="dropdown-content">
                                     <a href="#photo-section">PHOTO</a>
-                                    <a href="#">VIDEO</a>
-                                    <a href="#">MUSIC</a>
-                                    <a href="#">ART</a>
-                                </div>
+                                    <a href="">ALBUM</a>
+                                    <!--<a href="#">MUSIC</a>-->
+                                     <!--<a href="#">ART</a>
+                                </div>-->
                             </li>
                             <li class="nav-item pl-20">
-                                <a class="nav-link" href="#">BLOG</a>
+                                <a class="nav-link" href="{{ path('homepage') }}#photo-section">PHOTO</a>
                             </li>
+                            <li class="nav-item pl-20">
+                                <a class="nav-link" href="{{ path('album') }}">ALBUM</a>
+                            </li>
+                            <!--<li class="nav-item pl-20">
+                                <a class="nav-link" href="#">BLOG</a>
+                            </li>-->
                             <li class="nav-item pl-20">
                                 <a class="nav-link" href="/contact">CONTACT</a>
                             </li>
@@ -67,10 +74,10 @@
     {% endblock %}
         {% block body %}{% endblock %}
 
-    {%set currentPath = path(app.request.attributes.get('_route'))%}
-    {% if currentPath != '/' %}
-        <footer id="mainFooter" class="mainFooter">
-            {% block footer %}
+    {%set currentPath =  app.request.get('_route') %}
+    {% if currentPath != 'homepage' and currentPath != 'category_type' and currentPath != 'album'%}
+        {% block footer %}
+            <footer id="mainFooter" class="mainFooter">
                 <div class="container-fluid">
                     <div class="row copyrights">
                         <div class="col-md-2 col-xs-12">
@@ -81,16 +88,16 @@
                         </div>
                     </div>
                 </div>
-            {% endblock %}
         </footer>
+            {% endblock %}
     {% endif %}
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
             integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
             crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.rawgit.com/jwarby/jquery-awesome-cursor/master/dist/jquery.awesome-cursor.min.js"></script></pre>
+    <script src="{{ asset('js/masonrycdn.js') }}"></script>
+    <script src="{{ asset('js/awesomecursor.js') }}"></script>
     <script src="https://kit.fontawesome.com/9d9bf02201.js"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/masonry.js') }}"></script>

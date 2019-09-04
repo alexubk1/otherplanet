@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Entity\Album;
 use App\Entity\Article;
 use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +20,16 @@ class AlbumController extends Controller {
     public function index()
     {
 
-        $articles= $this->getDoctrine()->getRepository(Article::class)->findBy(['isPublish'=> true]);
-        dump($articles);
-        die;
+        $albums= $this->getDoctrine()->getRepository(Album::class)->findAll();
 
-        return $this->render('album/index.html.twig');
+        foreach ($albums as $album) {
+            if ($album->getArticle() !== null) {
+                $article = $this->getDoctrine()->getRepository(Article::class)->findByAlbum($album->getId());
+                $album->count = count($article);
+            }
+        }
+
+        return $this->render('album/index.html.twig',[
+            "albums" => $albums]);
     }
 }

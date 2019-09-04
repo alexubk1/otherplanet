@@ -108,6 +108,7 @@
     -ms-transition: all 1s ease;
     transition: all 1s ease;
 }
+
 @media (max-width: 767px) {
     .nav-side-menu {
         position: relative;

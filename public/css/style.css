@@ -14,9 +14,11 @@ Navigation Menu
     src: url('../font/venus.ttf');
 }
 
-html{ height:100%; }
+html{
+    min-height:100%;
+}
+
 body{ min-height:100%; padding:0; margin:0; position:relative; }
-footer{ background:PapayaWhip; }
 
 /* Trick: */
 body {
@@ -79,9 +81,20 @@ body.mobile-nav-active #mobile-nav-toggle {
     z-index: 999999;
 }
 
-.text-box-2{
+.text-box-2 {
     position:absolute;
-    top:20%;
+    top:15%;
+    width: 100%;
+    z-index:2;
+    color: white;
+    text-align: center;
+    font-weight: 200;
+    z-index: 999999;
+}
+
+.text-box-3 {
+    position:absolute;
+    top:15%;
     width: 100%;
     z-index:2;
     color: white;
@@ -97,7 +110,7 @@ h1 {
 }
 
 h2{
-    font-size: 8vw;
+    font-size: 8em;
     font-family: 'Audiowide', cursive;
     text-shadow: 0 0 12px rgb(196, 196, 196);
 }
@@ -202,8 +215,6 @@ nav .navbar {
     z-index: 1;
 }
 
-
-
 .contact-title {
     color: white;
     font-family: 'Arimo', 'Arial';
@@ -213,6 +224,30 @@ nav .navbar {
     color: #fff;
     background-color: #557394;
     border-color: #557394;
+}
+
+@media (max-width: 991px) {
+    .padding-bottom-hover:hover {
+        padding-bottom: 110px!important;
+    }
+}
+
+@media (max-width: 767px) {
+    .padding-bottom-hover:hover {
+        padding-bottom: 110px !important;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
+
+    .text-box-2 {
+        top: 10%;
+    }
+
+    .text-box-3 {
+        top: 9%;
+    }
 }
 
 

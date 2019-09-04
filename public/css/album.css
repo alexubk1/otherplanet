@@ -1,0 +1,100 @@
+.overlay-image {
+    position: relative;
+    width: 100%;
+}
+
+.overlay-image .image-hover {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.image-hover {
+    filter:brightness(0.7);
+}
+
+.overlay-image .text {
+    color: #fff;
+    font-size: 2vw;
+    line-height: 1.5em;
+    text-align: center;
+    position: absolute;
+    top: 70%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Arimo', Arial;
+    font-weight: 100;
+    padding-bottom:10px;
+}
+
+.overlay-image .text-count {
+    color: #fff;
+    font-size: 2vw;
+    line-height: 1.5em;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Arimo', Arial;
+    font-weight: 100;
+}
+
+
+.overlay-image .text-hover {
+    color: #fff;
+    font-size: 30px;
+    line-height: 1.5em;
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Arimo', Arial;
+    font-weight: 100;
+    display: none;
+}
+
+.overlay-image .normal {
+    transition: .5s ease;
+}
+
+.overlay-image:hover .text {
+    display: block;
+    transform:translate(-50%, -150%);
+    transition: transform 0.35s ease-out, opacity 0.3s ease, -webkit-transform 0.35s ease-out;
+}
+
+.overlay-image:hover .text-count {
+    display: block;
+    transform:translate(-50%, -150%);
+    transition: transform 0.35s ease-out, opacity 0.3s ease, -webkit-transform 0.35s ease-out;
+}
+
+
+.overlay-image:hover .text-hover {
+    display: block;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    margin: auto;
+    -webkit-transition: opacity 0.35s ease;
+    transition: transform 0.35s ease-out, opacity 0.3s ease, -webkit-transform 0.35s ease-out;
+}
+
+.image-hover:hover {
+    filter:brightness(0.5);
+    opacity: 1!important;
+}
+
+.grid-album {
+    margin-left: 20px!important;
+}
+
+@media (max-width: 816px) {
+    .overlay-image .text-count {
+        font-size: 4vw;
+    }
+    .overlay-image .text {
+        font-size: 4vw;
+    }
+}

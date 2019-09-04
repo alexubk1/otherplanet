@@ -19,8 +19,7 @@ class ArticleController extends Controller {
      */
     public function index() {
 
-        $articles= $this->getDoctrine()->getRepository(Article::class)->findBy(['isPublish'=> true]);
-
+        $articles= $this->getDoctrine()->getRepository(Article::class)->findBy(['isPublish'=> true], ['id'=>'desc']);
         return $this->render('articles/index.html.twig', array('articles' => $articles));
     }
 
@@ -34,6 +33,7 @@ class ArticleController extends Controller {
             $category= $this->getDoctrine()->getRepository(Category::class)->findOneByCategoryName($type);
             if(!empty($category)) {
                 $articles= $this->getDoctrine()->getRepository(Article::class)->findAllPicturesByCategory($category);
+
                 return $this->render('articles/index.html.twig', array('articles' => $articles));
             }
             else {
@@ -45,8 +45,5 @@ class ArticleController extends Controller {
             $articles = null;
             return $this->render('articles/index.html.twig', array('articles' => $articles));
         }
-
-
-
     }
 }

@@ -62,7 +62,7 @@ class AdminPictureController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
             $em->flush();
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('admin_publication');
         }
         return $this->render('admin/publication/new.html.twig', array(
             'form' => $form->createView()
@@ -81,7 +81,7 @@ class AdminPictureController extends Controller
         if($edit_form->isSubmitted() && $edit_form->isValid()) {
 
             if ($article->getPicture()){
-                $file = $article->getPicture();
+                $file = $edit_form->get('picture')->getData();
 
                 //To save your actually image if she's not edit
                 $fileName = $this->_generateUniqueFileName()

@@ -17,9 +17,37 @@ class Album
     /**
      * @var string
      *
-     * @ORM\Column(name="album", type="string", length=255, nullable=true)
+     * @ORM\Column(name="title", type="string", length=255, nullable=true)
      */
     private $title;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="album")
+     */
+    private $albums;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="articles")
+     */
+    private $article;
+
+    /**
+     * @return mixed
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param mixed $article
+     */
+    public function setArticle($article): void
+    {
+        $this->article = $article;
+    }
+
+
 
     /**
      * @return string
@@ -57,4 +85,21 @@ class Album
     public function __toString() {
         return $this->title;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAlbums()
+    {
+        return $this->albums;
+    }
+
+    /**
+     * @param mixed $albums
+     */
+    public function setAlbums($albums): void
+    {
+        $this->albums = $albums;
+    }
+
 }

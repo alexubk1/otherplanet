@@ -28,34 +28,44 @@
             <div class="sidenav">
                 <h2 class="EL-title">Ⓞⓟ</h2>
                 <a href="{{path('homepage') }}">BOOK 1 | ALL </a>
-                <a href="{{path('category_type', {type: 'landscape'}) }}">LANDSCAPE</a>
-                <a href="{{path('category_type', {type: 'inside'}) }}">INSIDE</a>
-                <a href="{{path('category_type', {type: 'street'}) }}">STREET</a>
-                <a href="{{path('category_type', {type: 'portrait'}) }}">PORTRAIT</a>
-                <a href="{{path('category_type', {type: 'video'}) }}">VIDEO</a>
+                <a href="{{path('category_type', {type: 'landscape'}) }}#photo-section">LANDSCAPE</a>
+                <a href="{{path('category_type', {type: 'inside'}) }}#photo-section">INSIDE</a>
+                <a href="{{path('category_type', {type: 'street'}) }}#photo-section">STREET</a>
+                <a href="{{path('category_type', {type: 'portrait'}) }}#photo-section">PORTRAIT</a>
+                <a href="{{path('category_type', {type: 'video'}) }}#photo-section">VIDEO</a>
                 <p class="pl-30">------------------------</p>
                 <a class="pt-10" href="/contact">CONTACT</a>
                 <a><span class="fab fa-instagram"></span></a>
             </div>
-
-
-            <h1 style="text-align: center;"class="pt-20 main dot-h1">- - - - - - - - - -</h1>
+        <h1 style="text-align: center;"class="pt-20 main dot-h1">- - - - - - - - - -</h1>
         <div class="parent-grid">
             <div class="grid main">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
-                {% if articles is not null %}
+                {% if articles is not empty %}
                     {% for article in articles %}
                     <div class="grid-item">
                         {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
                     </div>
                     {% endfor %}
-                {% else %}
-                 <div><p>This category has no content</p> </div>
-                {% endif %}
+                </div>
+                <footer id="mainFooter" class="mainFooter pt-100" style="z-index: 5">
+                    <div class="container-fluid">
+                        <div class="row copyrights">
+                            <div class="col-md-2 col-xs-12">
+                                <p><a class="footer-a" href="">General Conditions </a></p>
+                            </div>
+                            <div class="col-md-3 col-xs-12">
+                                <p><a class="footer-a" href="">Admin</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
-        </div>
 
+        {% else %}
+            <div><p>This category has no content</p> </div>
+        {% endif %}
         <!-- The Modal -->
 
         <div id="myModal" class="modal">
@@ -71,6 +81,7 @@
             <div id="caption"></div>
         </div>
     </section>
+
 {% endblock %}
 
 
