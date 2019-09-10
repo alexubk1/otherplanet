@@ -248,8 +248,9 @@ nav .navbar {
     .padding-bottom-hover:hover {
         padding-bottom: 110px !important;
     }
+
     h2 {
-        font-size: 50px;
+        font-size: 40px;
     }
     .text-box-homepage {
         top: 40%;

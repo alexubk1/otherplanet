@@ -60,7 +60,7 @@
                                 <a class="nav-link" href="{{ path('aboutme_index') }}">ABOUT ME</a>
                             </li>
                             <li class="nav-item pl-20">
-                                <a class="nav-link" href="#"><span class="fab fa-instagram"></span></a>
+                                <a class="nav-link" href="https://www.instagram.com/alexx_urb/?hl=fr" target="_blank"><span class="fab fa-instagram"></span></a>
 
                             </li>
                         </ul>
@@ -75,7 +75,7 @@
         {% block body %}{% endblock %}
 
     {%set currentPath =  app.request.get('_route') %}
-    {% if currentPath != 'homepage' and currentPath != 'category_type' and currentPath != 'album'%}
+    {% if currentPath != 'homepage' and currentPath != 'category_type' and currentPath != 'album' and currentPath != 'album_title'%}
         {% block footer %}
             <footer id="mainFooter" class="mainFooter">
                 <div class="container-fluid">

@@ -12,7 +12,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class AlbumController extends Controller {
+class AlbumController extends Controller
+{
 
     /**
      * @Route("/album", name="album")
@@ -20,7 +21,7 @@ class AlbumController extends Controller {
     public function index()
     {
 
-        $albums= $this->getDoctrine()->getRepository(Album::class)->findAll();
+        $albums = $this->getDoctrine()->getRepository(Album::class)->findAll();
 
         foreach ($albums as $album) {
             if ($album->getArticle() !== null) {
@@ -29,7 +30,22 @@ class AlbumController extends Controller {
             }
         }
 
-        return $this->render('album/index.html.twig',[
+        return $this->render('album/index.html.twig', [
             "albums" => $albums]);
+    }
+
+    /**
+     * @Route("/album/{album}", name="album_title")
+     */
+    public function albumTitle($album)
+    {
+        $articles= $this->getDoctrine()->getRepository(Article::class)->findByAlbum($album);
+
+            if (!empty($articles)) {
+
+                return $this->render('album/albumpicture.html.twig', array('articles' => $articles));
+            }
+
+        return $this->render('album/index.html.twig', []);
     }
 }

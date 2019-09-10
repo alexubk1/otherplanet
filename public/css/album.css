@@ -71,7 +71,6 @@
     transition: transform 0.35s ease-out, opacity 0.3s ease, -webkit-transform 0.35s ease-out;
 }
 
-
 .overlay-image:hover .text-hover {
     display: block;
     transform: translate(-50%, -50%);
@@ -88,6 +87,15 @@
 
 .grid-album {
     margin-left: 20px!important;
+}
+
+.back-album {
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    z-index:5;
+    font-family: 'Arimo';
 }
 
 @media (max-width: 816px) {

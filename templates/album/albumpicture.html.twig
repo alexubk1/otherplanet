@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Album{% endblock %}
+
+{% block body %}
+    <section class="">
+        <div class="container-header-album"></div>
+        <div class="img_caption">
+            <h2 class="text-box title-header text-center">Album<hr></h2>
+        </div>
+    </section>
+    <section id="image-section" class="image-section">
+        <div class="back-album pt-10">
+            <a class="pb-30 " style="z-index: 1" href="{{ path('album') }}">Retour sur la liste des albums</a>
+        </div>
+        <h1 style="text-align: center;"class=" main dot-h1 pt-30">- - - - - - - - - -</h1>
+        <div class="parent-grid pt-120">
+            <div class="grid">
+                <div class="grid-sizer"></div>
+                <div class="gutter-sizer"></div>
+                {% if articles is not empty %}
+                {% for article in articles %}
+                    <div class="grid-item">
+                        {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <footer id="mainFooter" class="mainFooter pt-100" style="z-index: 5">
+                <div class="container-fluid">
+                    <div class="row copyrights">
+                        <div class="col-md-2 col-xs-12">
+                            <p><a class="footer-a" href="">General Conditions </a></p>
+                        </div>
+                        <div class="col-md-3 col-xs-12">
+                            <p><a class="footer-a" href="">Admin</a></p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            {% else %}
+                <div><p>This category has no content</p> </div>
+            {% endif %}
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <span id='arrowRight' class="arrowRight fa fa-arrow-circle-o-right"></span>
+            <span class="arrowLeft fa fa-arrow-circle-o-left"></span>
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <img class="img01" id="img01">
+                <div class="child-left"></div>
+                <div class="child-right"></div>
+                <div class="child-top"></div>
+            </div>
+            <div id="caption"></div>
+        </div>
+    </section>
+
+{% endblock %}

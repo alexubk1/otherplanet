@@ -4,8 +4,15 @@
 
 body {
     background: url("../images/Login-img.jpg");
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 50vh;
+    width: auto;
 }
 
 .username{
@@ -20,16 +27,16 @@ body {
 }
 
 .login-container {
-border-radius: 3px;
-overflow: hidden;
-padding-right: 15px;
-padding-left: 15px;
-max-width: 323px;
-margin-top: 90px;
-background-image: linear-gradient(to bottom, #00000073, #3b3b3bcf, #2222227d, #22222252, rgba(255, 255, 255, 0.1));
-padding-bottom: 10px;
-margin-right: auto;
-margin-left: auto;
+    border-radius: 3px;
+    overflow: hidden;
+    padding-right: 15px;
+    padding-left: 15px;
+    max-width: 323px;
+    margin-top: 90px;
+    background-image: linear-gradient(to bottom, #00000073, #3b3b3bcf, #2222227d, #22222252, rgba(255, 255, 255, 0.1));
+    padding-bottom: 10px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .request-container {
@@ -118,7 +125,6 @@ span.input-group-addon{
     padding: 0 8px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    border-radius: 10px!important;
 }
 
 .login-container input[type=text]:hover, input[type=password]:hover {
@@ -179,4 +185,48 @@ span.input-group-addon{
     border-radius: 4px;
     font-size: 1em;
     cursor: pointer;
+}
+
+@media only screen  and (max-width: 767px) {
+    .login-container {
+        max-width: 100%;
+        margin-top: 0;
+        background-image: none;
+    }
+    .login-container h1 {
+        font-size: 40px;
+    }
+    .login-container h2 {
+        font-size: 30px;
+        padding-bottom: 60px;
+    }
+
+    .login-container input[type=text], input[type=password] {
+        width: 100%;
+        height: 40px;
+        padding: 6px 12px;
+        background-image: none;
+        border: 1px solid #d9dadc;
+        border-radius: 0;
+    }
+    .remember-box {
+        padding-top: 10px;
+    }
+    #remember_me {
+        width:10px;
+        height:10px;
+    }
+    .remember-box {
+        font-size: 20px;
+    }
+    .login-container input[type=submit] {
+        width: 100%;
+        height: 40px;
+        padding: 6px 12px;
+        background-image: none;
+        border-radius: 0;
+    }
+    .login-container a {
+        font-size: 20px;
+    }
 }

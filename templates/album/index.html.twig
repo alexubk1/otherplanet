@@ -19,7 +19,8 @@
                     {% for album in albums %}
                         {% if album.article is not null %}
                         <div class="grid-item  overlay-image">
-                            <img class="img-show image-hover" alt="gallery picture" src="{{ asset('uploads/images/' ~ album.article.picture|raw) }}">
+                            <a href="{{ path('album_title', {album:album.id}) }}#image-section"><img class="img-show image-hover" alt="gallery picture" src="{{ asset('uploads/images/' ~ album.article.picture|raw) }}"></a>
+                            <div><a href="{{ path('album_title', {album:album.id}) }}#image-section">
                             <div class="text">{{ album.title }}</div>
                             <div class="text-count">{{ album.count}}
                             {% if album.count < 2  %}
@@ -29,6 +30,8 @@
                             {% endif %}
                             </div>
                             <div class="text-hover">Voir la gallerie</div>
+                                </a></div>
+
                         </div>
                         {% endif %}
                     {% endfor %}
