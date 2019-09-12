@@ -5,63 +5,85 @@
 {% block body %}
 
     <section>
-            <!-- The slideshow -->
-            <div class="carousel-inner" id="slideshow">
-                <div class="carousel-item active image">
-                    <div class="text-box-homepage" >
-                        <h2 class="wow slideInRight"  data-wow-duration="2s"><a style="color: white; z-index:-1; text-underline: none"  href="">PHOTO</a></h2>
-                        <hr>
-                    </div>
-                </div>
-                <div class="carousel-item image2">
-                    <div class="text-box-homepage">
-                        <h2 class="wow slideInUp" data-wow-duration="4s" ><a style="color: white; text-underline: none " href="">ART</a></h2>
-                        <hr>
-                    </div>
+        <!-- The slideshow -->
+        <div class="carousel-inner" id="slideshow">
+            <div class="carousel-item active image">
+                <div class="text-box-homepage" >
+                    <h2 class="wow slideInRight"  data-wow-duration="2s"><a style="color: white; z-index:-1; text-underline: none"  href="">PHOTO</a></h2>
+                    <hr>
                 </div>
             </div>
+            <div class="carousel-item image2">
+                <div class="text-box-homepage">
+                    <h2 class="wow slideInUp" data-wow-duration="4s" ><a style="color: white; text-underline: none " href="">ART</a></h2>
+                    <hr>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="photo-section" class="image-section">
+    <section id="photo-section" class="image-section ">
         <!-- Click photo to check out the modal -->
-
-            <div class="sidenav">
-                <h2 class="EL-title">Ⓞⓟ</h2>
-                <a href="{{path('homepage') }}">BOOK 1 | ALL </a>
-                <a href="{{path('category_type', {type: 'landscape'}) }}#photo-section">LANDSCAPE</a>
-                <a href="{{path('category_type', {type: 'inside'}) }}#photo-section">INSIDE</a>
-                <a href="{{path('category_type', {type: 'street'}) }}#photo-section">STREET</a>
-                <a href="{{path('category_type', {type: 'portrait'}) }}#photo-section">PORTRAIT</a>
-                <a href="{{path('category_type', {type: 'video'}) }}#photo-section">VIDEO</a>
-                <p class="pl-30">------------------------</p>
-                <a class="pt-10" href="/contact">CONTACT</a>
-                <a href="https://www.instagram.com/alexx_urb/?hl=fr" target="_blank"><span class="fab fa-instagram"></span></a>
-            </div>
+        <div class="sidenav">
+            <h2 class="EL-title">Ⓞⓟ</h2>
+            <a href="{{path('homepage') }}">BOOK 1 | ALL </a>
+            <a href="{{path('category_type', {type: 'landscape'}) }}#photo-section">LANDSCAPE</a>
+            <a href="{{path('category_type', {type: 'inside'}) }}#photo-section">INSIDE</a>
+            <a href="{{path('category_type', {type: 'street'}) }}#photo-section">STREET</a>
+            <a href="{{path('category_type', {type: 'portrait'}) }}#photo-section">PORTRAIT</a>
+            <a href="{{path('category_type', {type: 'video'}) }}#photo-section">VIDEO</a>
+            <p class="pl-30">------------------------</p>
+            <a class="pt-10" href="/contact">CONTACT</a>
+            <a href="https://www.instagram.com/alexx_urb/?hl=fr" target="_blank"><span class="fab fa-instagram"></span></a>
+        </div>
         <h1 style="text-align: center;"class="pt-20 main dot-h1">- - - - - - - - - -</h1>
+
         <div class="parent-grid">
+
+            <!-- Loader -->
+            <div id="loadingDiv" class="loader loader--style1" title="0">
+                <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="200px" height="200px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                <path opacity="0.7" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+                    <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                C22.32,8.481,24.301,9.057,26.013,10.047z">
+                        <animateTransform attributeType="xml"
+                                          attributeName="transform"
+                                          type="rotate"
+                                          from="0 20 20"
+                                          to="360 20 20"
+                                          dur="1s"
+                                          repeatCount="indefinite"/>
+                    </path>
+                </svg>
+            </div>
+            <!-- END Loader -->
+
             <div class="grid main">
                 <div class="grid-sizer"></div>
                 <div class="gutter-sizer"></div>
                 {% if articles is not empty %}
-                    {% for article in articles %}
+                {% for article in articles %}
                     <div class="grid-item">
                         {% if article.picture|length > 0 %}<img class="img-show" alt="gallery picture" src="{{ asset('uploads/images/' ~ article.picture|raw) }}">{% endif %}
                     </div>
-                    {% endfor %}
-                </div>
-                <footer id="mainFooter" class="mainFooter pt-100" style="z-index: 5">
-                    <div class="container-fluid">
-                        <div class="row copyrights">
-                            <div class="col-md-2 col-xs-12">
-                                <p><a class="footer-a" href="">General Conditions </a></p>
-                            </div>
-                            <div class="col-md-3 col-xs-12">
-                                <p><a class="footer-a" href="">Admin</a></p>
-                            </div>
+                {% endfor %}
+            </div>
+            <footer id="mainFooter" class="mainFooter pt-100" style="z-index: 5">
+                <div class="container-fluid">
+                    <div class="row copyrights">
+                        <div class="col-md-2 col-xs-12">
+                            <p><a class="footer-a" href="">General Conditions </a></p>
+                        </div>
+                        <div class="col-md-3 col-xs-12">
+                            <p><a class="footer-a" href="">Admin</a></p>
                         </div>
                     </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
+        </div>
 
         {% else %}
             <div><p>This category has no content</p> </div>
@@ -72,10 +94,10 @@
             <span class="arrowLeft fa fa-arrow-circle-o-left"></span>
             <span class="close">&times;</span>
             <div class="modal-content">
-            <img class="img01" id="img01">
-            <div class="child-left"></div>
-            <div class="child-right"></div>
-            <div class="child-top"></div>
+                <img class="img01" id="img01">
+                <div class="child-left"></div>
+                <div class="child-right"></div>
+                <div class="child-top"></div>
             </div>
             <div id="caption"></div>
         </div>

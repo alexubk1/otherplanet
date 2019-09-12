@@ -1,12 +1,13 @@
 $(document).ready(function(){
+    var pathArray = window.location.pathname;
 
-        $(window).scroll(function () {
+    $(window).scroll(function () {
             var sc = $(window).scrollTop();
 
             if ($(window).width() > 991) {
                 if (sc > 750) {
                     $('.sidenav').css('position', 'fixed');
-                    if (window.location.pathname !== '/album') {
+                    if (!window.location.href.indexOf("album") > -1) {
                         $('.dot-h1').css('margin-top', '45px');
                         $('.grid').css('margin-top', '180px');
                     }

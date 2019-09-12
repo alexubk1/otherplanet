@@ -1,0 +1,17 @@
+.loader{
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    z-index: 1;
+    left: 8%;
+}
+
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect{
+    fill: #FF6700;
+}

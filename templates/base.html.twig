@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1" name="viewport">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
         <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:100i|Abril+Fatface" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
@@ -13,6 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/aboutme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
         <link rel="stylesheet" href="{{ asset('css/album.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
 
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="" />
@@ -104,6 +106,7 @@
     <script src="{{ asset('js/nav.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/loader.js') }}"></script>
 
     <script></script>
 

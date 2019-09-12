@@ -187,7 +187,7 @@ span.input-group-addon{
     cursor: pointer;
 }
 
-@media only screen  and (max-width: 767px) {
+@media (max-width: 767px) {
     .login-container {
         max-width: 100%;
         margin-top: 0;
